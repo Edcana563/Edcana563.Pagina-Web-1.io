@@ -1,0 +1,360 @@
+/*Tenemos un estilo de CSS llamado BEM, 
+en el cual tenemos Bloques, Elementos, Modificadores
+estos se pueden ver con el siguiente ejemplo:
+.card{}
+.card__titulo {}
+.card__image {}
+.card__boton {}
+.card__boton--activo{}*/
+
+/*Otro estilo es Utility First: propiedad y un valor por clase
+clases con una sola propiedad que describen qué haría
+.text-center {}
+.color-red-100 {}
+.background-blue-200 {}
+.padding-2 {}
+.margin-2 {}*/
+
+/*Módulos: una clase padre y sus hijos
+.card {}
+.card h2 {}
+.card img {}
+.card a*/
+:root{
+  --blanco: #FFFFFF;
+  --oscuro: #212121;
+  --primary: #FFC107;
+  --secondary:  #0097A7;
+  --gris:  #777777;
+  --cool_blue: #111199;
+  --fuente_p:  1.8rem;
+}
+/*La solucción para evitar crear multiples 
+sitios web y que sean adaptables a una gran cantidad
+de dispositivos es:
+----------RESPONSIVE WEB DESIGN CON MEDIA QUERIES----------------
+UN EJEMPLO:
+Media Queries
+@media (min-width:768px){
+}
+@media (min-width:992px){
+}
+*/
+  html{
+    font-size: 72.5;
+    box-sizing: border-box;
+    scroll-snap-type: y proximity;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+.sombra{ /*25px 24px 25px 15px*/
+  -webkit-box-shadow: 35px 34px 35px 25px rgba(55,55,55,1);
+  -moz-box-shadow: 35px 34px 35px 25px rgba(55,55,55,1);
+  -box-shadow: 35px 34px 35px 25px rgba(55,55,55,1);
+  background-color: var(--blanco);
+  padding: 1rem;
+}
+  h1{
+    font-size: 3.8rem;
+}
+  h2{
+    font-size: 2.8rem;
+}
+  h3{
+    font-size: 1.8rem; 
+}
+  body{
+    font-size: 24px; 
+    font-family: 'Alumni Sans', sans-serif;/*Google Fonts*/
+    font-weight: 800;
+    background-image: linear-gradient(to top, var(--secondary) 0%, var(--blanco) 100%)      
+  }
+  .titulo {
+text-align: center;
+justify-self: center;
+font-size: 3.8rem;
+}
+  .titulo span{
+font-size: 2rem;
+}
+
+
+
+.boton{
+background-color: var(--secondary);
+color: var(--blanco);
+padding: 0.5rem 1rem;
+margin-top: 3rem;
+font-size:2rem; 
+text-decoration: none; 
+text-transform: uppercase; 
+font-weight: bold;
+border-radius: .5rem;
+width: 90%;
+text-align: center;
+border:none;
+}
+.boton:hover {
+  cursor:pointer;
+}
+
+
+.enviar .boton{
+  width: 100%;
+}
+@media (min-width: 750px){
+  .enviar .boton{
+    width: auto;
+  }
+}
+.flex{
+  display: flex;
+}
+.alinear-derecha {
+  justify-content: flex-end;
+}
+
+.nav-bg{
+  background-color: var(--secondary);
+}
+
+
+  .navegacion-principal{
+
+display: flex;
+justify-content: space-around;
+flex-direction: column; 
+/*There are different kinds of justify*/
+
+}
+.navegacion-principal a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 700;  
+  padding: 1rem;
+  display: block;
+  text-align: center;
+  align-items: center;
+}
+
+.navegacion-principal a:hover {
+  background-color: var(--primary); 
+  padding: 1rem;
+  color: var(--oscuro);
+}
+
+
+h1, h3, h2{
+  text-align: center;
+}
+
+.ubic p{
+  align-items: center;
+  justify-content: center; 
+}
+/*.navegacion-principal a:visited {
+  color: darkred;
+}
+  .navegacion-principal a:focus{
+
+}*/
+.hero {
+  background-image: url(../hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 450px;
+  padding: 0;
+  position: relative;
+}
+.contenido-hero{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);/*anterior*/
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+
+  display: flex;
+  flex-direction: column;
+}
+/*el tamaño de lo que se muestra se define por
+ tamaño de contenido, tamaño de relleno y el margen*/
+ .contenido-hero h2, .contenido-hero p{
+  color: var(--blanco);
+  
+}
+  .contenido-hero p{
+background: none;
+}
+
+
+
+p {
+  
+}
+  .titulo{
+    text-align: center;
+    font-size: var(--fuente_p);
+    color: var(--primary);
+    
+  }
+
+  /*We can use rem, em, px for the size of text*/
+  .titulo span{ /*Se usa el h1 span porque solo queremos editar ese*/
+    font-size: var(--fuente_p);
+    color: green;
+  }
+@media (min-width: 1190px)
+  {
+  .servicios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);/*1 fraction*/
+    column-gap: 1rem;
+}
+}
+  .heading h2:nth-child(1), .navegacion-principal{
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+  .titulo{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+/*CSS grid permite definir la ubicacion y tamaño de los elementos del sitio
+web
+Mientras que en flexbox el contenido crece automaticamente, en CSS grid
+el contenido se agrupa dentro de un área definida
+flexbox solo tiene row y column, mientras que grid puede usar tanto row y column juntos
+
+Cómo decidir cuál usar?
+
+flexbox: alineacion o distribucion de elementos dentro de contenedores, como nav
+
+grid: para el layout del sitio web como pueden ser las columnas o contenedores
+
+
+*/
+  ::placeholder {
+    color:  #505050;
+    opacity: 1;
+    font-family: 'Alumni Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+  /*Recordar el enfoque que tendrá la página para los celulares, 
+  tablets, y usar lo que está a continuación:*/
+  @media (min-width: 900px)
+  {
+    .navegacion-principal{
+      flex-direction: row;
+    }
+  }
+
+  .servicio{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+  .servicio h3{
+    color: var(--secondary);
+  }
+  .servicio p{
+    line-height: 2; 
+    text-align: center;
+  }
+  .servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+.heading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+.contenedor{
+  width: auto;
+  margin: 2rem;
+}
+/*CONTACTO*/
+
+.formulario{
+background-color: var(--gris);
+width: min(65rem, 100%); /*usar el valor mas pequeño*/
+display: flex;
+padding: 5rem;
+margin: auto;/*siempre que sea un elemento cuyo padre no sea display flex*/
+border-radius: 0.5rem;
+}
+
+.formulario fieldset{
+  border: none;
+}
+.formulario legend{
+  text-align: center;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+@media (min-width: 768px){
+  .contenedor-campos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    grid-template-rows: auto auto, 20rem;
+  }
+}
+.contenedor-campos{
+  display: grid;
+
+}
+.campo{
+  margin-bottom: 1rem;
+}
+.campo label{
+  color: var(--blanco);
+  font-weight: bold;
+  margin-bottom: .5rem;
+  display: block;
+}
+.campo textarea{
+  height: 20rem;
+}
+/*.campo input[type = "text"]{
+  background-color: red;
+}*/
+
+.campo:nth-child(3), .campo:nth-child(4)
+{
+  grid-column: 1 / 3;
+}
+.input-text{
+  width: 100%;
+  border: none;
+  padding:1rem;
+  border-radius: 0.5rem;
+
+}
+
+.footer{
+  text-align: center;
+  color: var(--blanco);
+}
+
+/*media queries "estandar":
+480px para un telefono
+768px para una tablet
+1140px para laptop y pc
+1400px para pantallas grandes*/
